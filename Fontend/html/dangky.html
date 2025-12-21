@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký học viên</title>
+
+    <link rel="stylesheet" href="/css/dangky.css">
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/dangky.js"></script>
+</head>
+
+<body ng-controller="DangKyCtrl">
+
+    <div class="khung-dang-ky">
+    <h2 class="tieu-de">ĐĂNG KÝ HỌC VIÊN</h2>
+
+    <div class="nhom-nhap">
+        <label>Tên đăng nhập</label>
+        <input type="text" ng-model="hocVien.tenDangNhap">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Mật khẩu</label>
+        <input type="password" ng-model="hocVien.matKhau">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Họ tên</label>
+        <input type="text" ng-model="hocVien.tenHocVien">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Ngày sinh</label>
+        <input type="date" ng-model="hocVien.ngaySinh">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Giới tính</label>
+        <select ng-model="hocVien.gioiTinh">
+            <option value="true">Nam</option>
+            <option value="false">Nữ</option>
+        </select>
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Email</label>
+        <input type="email" ng-model="hocVien.email">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Số điện thoại</label>
+        <input type="text" ng-model="hocVien.soDienThoai">
+    </div>
+
+    <div class="nhom-nhap">
+        <label>Địa chỉ</label>
+        <input type="text" ng-model="hocVien.diaChi">
+    </div>
+
+    <button class="nut-dang-ky" ng-click="dangKy()">
+        Đăng ký
+    </button>
+
+    <p class="thong-bao">{{thongBao}}</p>
+
+    <p class="link-dang-nhap">
+        Đã có tài khoản?
+        <a href="login.html">Đăng nhập</a>
+    </p>
+</div>
+
+</body>
+</html>
