@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ - Trung tâm ngoại ngữ</title>
+
+    <link rel="stylesheet" href="/css/khoahoc.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/loadkhoahoc.js"></script>
+</head>
+
+<body ng-controller="KhoaHocCtrl">
+
+
+<nav class="thanh-dieu-huong">
+    <div class="logo">
+        TRUNG TÂM NGOẠI NGỮ
+    </div>
+
+    <ul class="menu">
+        <li><a href="trangchuhv.html">Trang chủ</a></li>
+        <li class="menu2">
+            <a href="#">Khóa học</a>
+            <ul class="submenu">
+                <li><a href="khoahoc.html?loaiTieng=TIENG_ANH">Tiếng Anh</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_TRUNG">Tiếng Trung</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_HAN">Tiếng Hàn</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_NHAT">Tiếng Nhật</a></li>
+            </ul>
+        </li>
+        <li><a href="lopdadangky.html">Lớp đã đăng ký</a></li>
+        <li><a href="xemkythi.html">Kỳ thi</a></li>
+        <li><a href="thongtin.html">Thông tin cá nhân</a></li>
+    </ul>
+</nav>
+
+<section class="gioi-thieu">
+        <h1>{{tenNgonNgu}}</h1>
+        <p>{{moTaNgonNgu}}</p>
+    </section>
+
+
+    <section class="danh-sach">
+        <h2>Danh sách khóa học</h2>
+
+        <div class="khong-co-du-lieu" ng-if="dsKhoaHoc.length == 0">
+            Không có khóa học nào
+        </div>
+
+        <div class="khoahoc" ng-repeat="kh in dsKhoaHoc">
+            <h3>{{kh.TenKhoaHoc}}</h3>
+            <p><b>Trình độ:</b> {{kh.Level}}</p>
+            <p><b>Số buổi:</b> {{kh.SoBuoiHoc}}</p>
+            <p class="mo-ta">{{kh.MoTa}}</p>
+
+            <button class="nut-dang-ky"
+                    ng-click="dangKyHoc(kh.IdKhoaHoc)">
+                Đăng ký học
+            </button>
+
+
+        </div>
+    </section>
+
+
+
+
+<section class="khoa-hoc-pho-bien">
+    <h2>Các khóa học ngoại ngữ</h2>
+
+    <div class="danh-sach-khoa-hoc">
+
+        <div class="khoa-hoc">
+            <a href="khoahoc.html?loaiTieng=TIENG_ANH">Tiếng Anh</a>
+            <p>Xây dựng nền tảng ngữ pháp và giao tiếp cơ bản ngôn ngữ phổ biến nhất hiện nay.</p>
+        </div>
+
+        <div class="khoa-hoc">
+            <a href="khoahoc.html?loaiTieng=TIENG_TRUNG">Tiếng Trung</a>
+            <p>Rèn luyện phát âm, từ vựng và kỹ năng giao tiếp tiếng Trung trong học tập và công việc.</p>
+        </div>
+
+        <div class="khoa-hoc">
+            <a href="khoahoc.html?loaiTieng=TIENG_HAN">Tiếng Hàn</a>
+            <p>Trang bị kiến thức tiếng Hàn cơ bản, luyện giao tiếp và chuẩn bị cho kỳ thi TOPIK.</p>
+        </div>
+
+        <div class="khoa-hoc">
+            <a href="khoahoc.html?loaiTieng=TIENG_NHAT">Tiếng Nhật</a>
+            <p>Học tiếng Nhật từ căn bản đến nâng cao, định hướng du học và làm việc tại Nhật Bản.</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<footer class="chan-trang">
+    <p><strong>Trung tâm Ngoại ngữ </strong></p>
+    <p>📍 Thị Trấn Yên Mỹ - Hưng Yên</p>
+    <p>📞 0988 888 888 | ✉ contact@ngoainguabc.vn</p>
+    <p>© 2025 Trung tâm Ngoại ngữ </p>
+</footer>
+<script src="/js/menu.js"></script>
+</body>
+</html>

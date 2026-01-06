@@ -1,0 +1,77 @@
+
+.gioi-thieu {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.gioi-thieu h1 {
+    color: #409ffe;
+}
+
+
+.danh-sach {
+    padding: 30px;
+    font-size: 25px;
+}
+
+.khoahoc {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.khoahoc h3 {
+    margin-top: 20px;
+    color: #1f8fff;
+}
+
+.mo-ta {
+    color: #555;
+}
+
+.nut-dang-ky {
+    margin-top: 10px;
+    padding: 22px 18px;
+    background: #28a745;
+    font-size: 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+.nut-dang-ky:hover {
+    background: #218838;
+}
+
+.khong-co-du-lieu {
+    color: red;
+    font-style: italic;
+}
+.danh-sach-khoa-hoc {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 50px;
+}
+
+.khoa-hoc {
+    background: #bfffc3;
+    padding: 40px;
+    border-radius: 15px;
+    flex: 1;
+
+}
+.danh-sach-khoa-hoc a {
+    color:#1e90ff;
+    text-decoration: none;
+    font-size:40px;
+    font-weight: bold;
+}
+
+.khoa-hoc-pho-bien{
+    margin:50px 150px;
+}

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Thông tin cá nhân</title>
+
+    <link rel="stylesheet" href="/css/menu+foot.css">
+    <link rel="stylesheet" href="/css/thongtinhv.css">
+</head>
+<body ng-controller="ThongTinCaNhanCtrl">
+
+<nav class="thanh-dieu-huong">
+    <div class="logo">
+        TRUNG TÂM NGOẠI NGỮ
+    </div>
+
+    <ul class="menu">
+        <li><a href="trangchuhv.html">Trang chủ</a></li>
+        <li class="menu2">
+            <a href="#">Khóa học</a>
+            <ul class="submenu">
+                <li><a href="khoahoc.html?loaiTieng=TIENG_ANH">Tiếng Anh</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_TRUNG">Tiếng Trung</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_HAN">Tiếng Hàn</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_NHAT">Tiếng Nhật</a></li>
+            </ul>
+        </li>
+        <li><a href="lopdadangky.html">Lớp đã đăng ký</a></li>
+        <li><a href="xemkythi.html">Kỳ thi</a></li>
+        <li><a href="thongtin.html">Thông tin cá nhân</a></li>
+    </ul>
+</nav>
+
+<div class="khung-noi-dung">
+
+    <h2>Thông tin cá nhân</h2>
+
+    <div class="khung-thong-tin">
+        <p><b>Họ tên:</b> {{ hocVien.TenHocVien }}</p>
+        <p><b>Email:</b> {{ hocVien.Email }}</p>
+        <p><b>Số điện thoại:</b> {{ hocVien.SoDienThoai }}</p>
+        <p><b>Ngày sinh:</b> {{ hocVien.NgaySinh | date:'dd/MM/yyyy' }}</p>
+        <p><b>Giới tính:</b> {{ hocVien.GioiTinh ? 'Nam' : 'Nữ' }}</p>
+        <p><b>Địa chỉ:</b> {{ hocVien.DiaChi }}</p>
+    </div>
+
+    <h2>Hóa đơn của tôi</h2>
+
+<table class="bangb" ng-if="dsHoaDon.length > 0">
+    <thead>
+        <tr>
+            <th>Lớp học</th>
+            <th>Số tiền</th>
+            <th>Ngày lập</th>
+            <th>Trạng thái</th>
+            <th>Ghi chú</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="hd in dsHoaDon">
+            <td>{{ hd.TenLopHoc }}</td>
+            <td>{{ hd.SoTien | number }} đ</td>
+            <td>{{ hd.NgayLap | date:'dd/MM/yyyy' }}</td>
+            <td>
+                <span ng-class="{
+                    'da-thanh-toan': hd.TrangThai === 'DA_THANH_TOAN',
+                    'chua-thanh-toan': hd.TrangThai === 'CHUA_THANH_TOAN'
+                }">
+                    {{ hd.TrangThai === 'DA_THANH_TOAN' ? 'Đã thanh toán' : 'Chưa thanh toán' }}
+                </span>
+            </td>
+            <td>{{ hd.GhiChu }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<p ng-if="dsHoaDon.length === 0" class="thong-bao">
+    Bạn chưa có hóa đơn nào.
+</p>
+
+
+<h2>Chứng chỉ của tôi</h2>
+
+<table class="bangb" ng-if="dsChungChi.length > 0">
+    <thead>
+        <tr>
+            <th>Khóa học</th>
+            <th>Ngày cấp</th>
+            <th>Xếp loại</th>
+            <th>Thao tác</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="cc in dsChungChi">
+            <td>{{ cc.IdKhoaHoc }}</td>
+            <td>{{ cc.NgayCap | date:'dd/MM/yyyy' }}</td>
+            <td>{{ cc.XepLoai }}</td>
+            <td>
+                <button ng-click="xemChungChi(cc.IdChungChi)">
+                    Xem chứng chỉ
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="thong-bao" ng-if="dsChungChi.length === 0">
+    Bạn chưa được cấp chứng chỉ nào.
+</p>
+
+
+
+    <h2>Đổi mật khẩu</h2>
+
+    <div class="khung-doi-mk">
+        <form ng-submit="doiMatKhau()">
+            <input type="password" ng-model="mk.MatKhauCu" placeholder="Mật khẩu cũ" required>
+            <input type="password" ng-model="mk.MatKhauMoi" placeholder="Mật khẩu mới" required>
+            <input type="password" ng-model="mk.XacNhan" placeholder="Xác nhận mật khẩu mới" required>
+
+            <button type="submit">Đổi mật khẩu</button>
+        </form>
+        <p class="thong-bao">{{ thongBao }}</p>
+    </div>
+
+</div>
+
+<footer class="chan-trang">
+    <p><strong>Trung tâm Ngoại ngữ </strong></p>
+    <p>📍 Thị Trấn Yên Mỹ - Hưng Yên</p>
+    <p>📞 0988 888 888 | ✉ contact@ngoainguabc.vn</p>
+    <p>© 2025 Trung tâm Ngoại ngữ </p>
+</footer>
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/thongtinhv.js"></script>
+
+</body>
+</html>

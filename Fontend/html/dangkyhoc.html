@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký học</title>
+
+    <link rel="stylesheet" href="/css/menu+foot.css">
+    <link rel="stylesheet" href="/css/dangkyhoc.css">
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/dangkyhoc.js"></script>
+</head>
+
+<body ng-controller="DangKyHocCtrl">
+
+<nav class="thanh-dieu-huong">
+    <div class="logo">
+        TRUNG TÂM NGOẠI NGỮ
+    </div>
+
+    <ul class="menu">
+        <li><a href="trangchuhv.html">Trang chủ</a></li>
+        <li class="menu2">
+            <a href="#">Khóa học</a>
+            <ul class="submenu">
+                <li><a href="khoahoc.html?loaiTieng=TIENG_ANH">Tiếng Anh</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_TRUNG">Tiếng Trung</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_HAN">Tiếng Hàn</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_NHAT">Tiếng Nhật</a></li>
+            </ul>
+        </li>
+        <li><a href="lopdadangky.html">Lớp đã đăng ký</a></li>
+        <li><a href="xemkythi.html">Kỳ thi</a></li>
+        <li><a href="thongtin.html">Thông tin cá nhân</a></li>
+    </ul>
+</nav>
+
+<h2 class="tieu-de">Danh sách lớp học</h2>
+
+<table class="bang-lop" ng-if="dsLop.length > 0">
+    <thead>
+        <tr>
+            <th>Lớp học</th>
+            <th>Giảng viên</th>
+            <th>Học phí</th>
+            <th>Khai giảng</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="lop in dsLop">
+            <td>{{lop.TenLopHoc}}</td>
+            <td>{{lop.TenGiangVien}}</td>
+            <td>{{lop.HocPhi | number}} đ</td>
+            <td>{{lop.NgayKhaiGiang | date:'dd/MM/yyyy'}}</td>
+            <td>
+                <button
+                    ng-disabled="lop.DaDangKy"
+                    ng-click="dangKy(lop)">
+                    {{ lop.DaDangKy ? 'Đã đăng ký' : 'Đăng ký học' }}
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p ng-if="dsLop.length == 0">
+    Không có lớp học cho khóa này
+</p>
+
+</body>
+</html>

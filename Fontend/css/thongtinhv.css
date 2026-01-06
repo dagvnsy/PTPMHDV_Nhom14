@@ -1,0 +1,84 @@
+.khung-noi-dung {
+    width: 70%;
+    margin: 100px auto;
+}
+
+.khung-thong-tin, .khung-doi-mk {
+    background: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    margin-bottom: 30px;
+    
+}
+
+.khung-thong-tin p {
+    margin: 8px 0;
+    font-size: 25px;
+}
+
+.khung-doi-mk input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 25px;
+}
+
+.khung-doi-mk button {
+    padding: 20px 20px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    display:block;
+}
+
+.khung-doi-mk button:hover {
+    background: #004999;
+}
+
+.thong-bao {
+    color: red;
+    margin-top: 10px;
+}
+.bangb {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.bangb th,
+.bangb td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.bangb th {
+    background: #1e90ff;
+    color: white;
+}
+
+.bangb button{
+    padding: 10px 12px;
+    background: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+}
+
+.da-thanh-toan {
+    color: green;
+    font-weight: bold;
+}
+
+.chua-thanh-toan {
+    color: red;
+    font-weight: bold;
+}

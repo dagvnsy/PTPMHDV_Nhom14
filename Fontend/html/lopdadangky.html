@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung"
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/lopdadangky.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+</head>
+<body ng-controller="LopDaDangKyCtrl">
+
+  <nav class="thanh-dieu-huong">
+    <div class="logo">
+        TRUNG TÂM NGOẠI NGỮ
+    </div>
+
+    <ul class="menu">
+        <li><a href="trangchuhv.html">Trang chủ</a></li>
+        <li class="menu2">
+            <a href="#">Khóa học</a>
+            <ul class="submenu">
+                <li><a href="khoahoc.html?loaiTieng=TIENG_ANH">Tiếng Anh</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_TRUNG">Tiếng Trung</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_HAN">Tiếng Hàn</a></li>
+                <li><a href="khoahoc.html?loaiTieng=TIENG_NHAT">Tiếng Nhật</a></li>
+            </ul>
+        </li>
+        <li><a href="lopdadangky.html">Lớp đã đăng ký</a></li>
+        <li><a href="xemkythi.html">Kỳ thi</a></li>
+        <li><a href="thongtin.html">Thông tin cá nhân</a></li>
+    </ul>
+</nav>
+<main class="noi-dung">
+    <h2>Lớp học đã đăng ký</h2>
+
+    <table class="bang-lop">
+        <thead>
+            <tr>
+                <th>Lớp học</th>
+                <th>Khóa học</th>
+                <th>Giảng viên</th>
+                <th>Khai giảng</th>
+                <th>Kết thúc</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lop in dsLop">
+                <td>{{ lop.TenLopHoc }}</td>
+                <td>{{ lop.TenKhoaHoc }}</td>
+                <td>{{ lop.TenGiangVien }}</td>
+                <td>{{ lop.NgayKhaiGiang | date:'dd/MM/yyyy' }}</td>
+                <td>{{ lop.NgayKetThuc | date:'dd/MM/yyyy' }}</td>
+                <td>
+                    <button ng-click="xemLichHoc(lop.IdLopHoc)">
+                        Xem lịch học
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <p ng-if="dsLop.length == 0">
+        Bạn chưa đăng ký lớp học nào.
+    </p>
+</main>
+<footer class="chan-trang">
+    <p><strong>Trung tâm Ngoại ngữ </strong></p>
+    <p>📍 Thị Trấn Yên Mỹ - Hưng Yên</p>
+    <p>📞 0988 888 888 | ✉ contact@ngoainguabc.vn</p>
+    <p>© 2025 Trung tâm Ngoại ngữ </p>
+</footer>
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/lopdadangky.js"></script>
+
+</body>
+
+</html>

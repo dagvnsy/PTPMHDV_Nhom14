@@ -1,0 +1,56 @@
+.bang-lop {
+    width: 90%;
+    margin: 0 auto 40px;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.noi-dung {
+    flex: 1;             
+    padding: 20px;
+}
+.bang-lop th,
+.bang-lop td {
+    padding: 12px 14px;
+    text-align: center;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 25px;
+}
+
+.bang-lop th {
+    background-color: #1e88e5;
+    color: #fff;
+    font-weight: bold;
+}
+
+
+
+.bang-lop button {
+    padding: 6px 12px;
+    background-color: #43a047;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.bang-lop button:hover {
+    background-color: #2e7d32;
+}
+
+h2{
+    padding:40px;
+    font-size: 40px;
+    text-align: center;
+}
