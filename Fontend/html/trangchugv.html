@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Trang chủ giảng viên</title>
+    <link rel="stylesheet" href="/css/menu+foot.css">
+    <link rel="stylesheet" href="/css/trangchugv.css">
+</head>
+
+<body ng-controller="TrangChuGVCtrl">
+
+<nav class="thanh-dieu-huong">
+    <div class="logo">TRANG GIẢNG VIÊN</div>
+    <ul class="menu">
+        <li><a href="trangchugv.html">Trang chủ</a></li>
+        <li><a href="lopdangday.html">Lớp đang dạy</a></li>
+        <li><a href="lichday.html">Lịch dạy</a></li>
+        <li id="menu-user"></li>
+    </ul>
+</nav>
+
+
+
+
+<div class="thong-tin">
+    <h2>Thông tin cá nhân</h2>
+    <p><b>Họ tên:</b> {{gv.TenGiangVien}}</p>
+    <p><b>Email:</b> {{gv.Email}}</p>
+    <p><b>SĐT:</b> {{gv.SoDienThoai}}</p>
+    <p><b>Trình độ:</b> {{gv.TrinhDo}}</p>
+    <p><b>Chuyên môn:</b> {{gv.ChuyenMon}}</p>
+</div>
+
+<hr>
+
+<h2>Đổi mật khẩu</h2>
+
+<div class="doi-mk">
+    <input type="password" ng-model="mkCu" placeholder="Mật khẩu hiện tại">
+    <input type="password" ng-model="mkMoi" placeholder="Mật khẩu mới">
+    <input type="password" ng-model="mkMoi2" placeholder="Nhập lại mật khẩu mới">
+
+    <button ng-click="doiMatKhau()">Đổi mật khẩu</button>
+</div>
+
+<p class="thong-bao">{{thongBao}}</p>
+
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/trangchugv.js"></script>
+<script src="/js/menu.js"></script>
+</body>
+</html>

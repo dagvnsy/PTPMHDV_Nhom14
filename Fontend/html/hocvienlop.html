@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách học viên</title>
+    <link rel="stylesheet" href="/css/giangvien.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+</head>
+<body ng-controller="HocVienLopCtrl">
+<nav class="thanh-dieu-huong">
+    <div class="logo">TRUNG TÂM NGOẠI NGỮ</div>
+    <ul class="menu">
+        <li><a href="trangchugv.html">Trang chủ</a></li>
+        <li><a href="lopdangday.html">Lớp đang dạy</a></li>
+        <li><a href="lichday.html">Lịch dạy</a></li>
+        <li id="menu-user"></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2 class="page-title">Danh sách học viên</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Email</th>
+                <th>SĐT</th>
+                <th>Địa chỉ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hv in dsHocVien">
+                <td>{{hv.TenHocVien}}</td>
+                <td>{{hv.NgaySinh | date:'dd/MM/yyyy'}}</td>
+                <td>{{hv.GioiTinh ? 'Nam' : 'Nữ'}}</td>
+                <td>{{hv.Email}}</td>
+                <td>{{hv.SoDienThoai}}</td>
+                <td>{{hv.DiaChi}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../js/angular.min.js"></script>
+<script src="../js/global.js"></script>
+<script src="/js/hocvienlop.js"></script>
+</body>
+</html>

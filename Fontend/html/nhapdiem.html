@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Nhập điểm</title>
+    <link rel="stylesheet" href="/css/giangvien.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+</head>
+<body ng-controller="NhapDiemCtrl">
+<nav class="thanh-dieu-huong">
+    <div class="logo">TRUNG TÂM NGOẠI NGỮ</div>
+    <ul class="menu">
+        <li><a href="trangchugv.html">Trang chủ</a></li>
+        <li><a href="lopdangday.html">Lớp đang dạy</a></li>
+        <li><a href="lichday.html">Lịch dạy</a></li>
+        <li id="menu-user"></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2 class="page-title">Nhập điểm kỳ thi</h2>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Học viên</th>
+                <th>Điểm</th>
+                <th>Kết quả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hv in dsHocVien">
+                <td>{{hv.TenHocVien}}</td>
+                <td>
+                    <input type="number"
+                           ng-model="hv.Diem"
+                           min="0"
+                           max="10"
+                           step="0.1"
+                </td>
+                <td>{{hv.KetQua}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="btn-box">
+        <button ng-click="luuDiem()">
+            Lưu điểm
+        </button>
+    </div>
+</div>
+
+<script src="/js/angular.min.js"></script>
+<script src="/js/global.js"></script>
+<script src="/js/nhapdiem.js"></script>
+</body>
+</html>

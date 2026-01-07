@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Lớp đang dạy</title>
+    <link rel="stylesheet" href="/css/giangvien.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+</head>
+<body ng-controller="LopDangDayCtrl">
+<nav class="thanh-dieu-huong">
+    <div class="logo">TRUNG TÂM NGOẠI NGỮ</div>
+    <ul class="menu">
+        <li><a href="trangchugv.html">Trang chủ</a></li>
+        <li><a href="lopdangday.html">Lớp đang dạy</a></li>
+        <li><a href="lichday.html">Lịch dạy</a></li>
+        <li id="menu-user"></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2 class="page-title">Lớp đang dạy</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lớp</th>
+                <th>Khóa học</th>
+                <th>Khai giảng</th>
+                <th>Kết thúc</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lop in dsLop">
+                <td>{{lop.TenLopHoc}}</td>
+                <td>{{lop.TenKhoaHoc}}</td>
+                <td>{{lop.NgayKhaiGiang | date:'dd/MM/yyyy'}}</td>
+                <td>{{lop.NgayKetThuc | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button class="btn" ng-click="xemHocVien(lop.IdLopHoc)">
+                        Xem học viên
+                    </button>
+                    <button class="btn" ng-click="xemKyThi(lop.IdLopHoc)">
+                        Xem kỳ thi của lớp
+                    </button>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../js/angular.min.js"></script>
+<script src="../js/global.js"></script>
+<script src="/js/lopdangday.js"></script>
+</body>
+</html>

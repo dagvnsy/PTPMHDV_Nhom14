@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch dạy</title>
+    <link rel="stylesheet" href="/css/giangvien.css">
+    <link rel="stylesheet" href="/css/menu+foot.css">
+</head>
+<body ng-controller="LichDayCtrl">
+<nav class="thanh-dieu-huong">
+    <div class="logo">TRUNG TÂM NGOẠI NGỮ</div>
+    <ul class="menu">
+        <li><a href="trangchugv.html">Trang chủ</a></li>
+        <li><a href="lopdangday.html">Lớp đang dạy</a></li>
+        <li><a href="lichday.html">Lịch dạy</a></li>
+        <li id="menu-user"></li>
+    </ul>
+</nav>
+<div class="container">
+    <h2 class="page-title">Lịch giảng dạy</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lớp</th>
+                <th>Khóa học</th>
+                <th>Ngày học</th>
+                <th>Ca</th>
+                <th>Phòng</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lh in dsLichHoc">
+                <td>{{lh.TenLopHoc}}</td>
+                <td>{{lh.TenKhoaHoc}}</td>
+                <td>{{lh.NgayHoc | date:'dd/MM/yyyy'}}</td>
+                <td>{{lh.CaHoc}}</td>
+                <td>{{lh.PhongHoc}}</td>
+                <td>{{lh.GhiChu}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script src="../js/angular.min.js"></script>
+<script src="../js/global.js"></script>
+<script src="/js/lichday.js"></script>
+</body>
+</html>
