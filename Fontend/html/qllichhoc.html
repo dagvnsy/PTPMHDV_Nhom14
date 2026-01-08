@@ -1,0 +1,49 @@
+
+
+
+
+<div ng-controller="QuanLyLichHocCtrl">
+
+    <h3>Quản lý lịch học (toàn trung tâm)</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="date" ng-model="loc.ngayHoc">
+        <select ng-model="loc.caHoc">
+            <option value="">Tất cả ca</option>
+            <option>Sáng</option>
+            <option>Chiều</option>
+            <option>Tối</option>
+        </select>
+        <input ng-model="loc.giangVien" placeholder="Tên giảng viên">
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Ngày</th>
+                <th>Ca</th>
+                <th>Phòng</th>
+                <th>Lớp</th>
+                <th>Khóa</th>
+                <th>Giảng viên</th>
+                <th>Ghi chú</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lh in dsLichHoc | filter:locFilter">
+                <td>{{lh.NgayHoc | date:'dd/MM/yyyy'}}</td>
+                <td>{{lh.CaHoc}}</td>
+                <td>{{lh.PhongHoc}}</td>
+                <td>{{lh.TenLopHoc}}</td>
+                <td>{{lh.TenKhoaHoc}}</td>
+                <td>{{lh.TenGiangVien}}</td>
+                <td>{{lh.GhiChu}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+

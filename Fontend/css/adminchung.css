@@ -1,0 +1,57 @@
+.toolbar {
+    margin-bottom: 15px;
+}
+
+.toolbar input {
+    padding: 6px;
+    width: 250px;
+}
+
+.toolbar button {
+    padding: 6px 12px;
+    margin-left: 10px;
+}
+
+.bang {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.bang th, .bang td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.bang th {
+    background: #e2e8f0;
+}
+
+button.xoa {
+    background: #ef4444;
+    color: white;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.modal-box {
+    background: #fff;
+    width: 400px;
+    margin: 100px auto;
+    padding: 20px;
+}
+
+.modal-box input, .modal-box select {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+.modal-box .nut {
+    text-align: right;
+}

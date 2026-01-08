@@ -1,0 +1,82 @@
+<div ng-controller="AdminLopHocCtrl">
+
+    <h3>Quản lý lớp học</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="text"
+               ng-model="tuKhoa"
+               placeholder="Tìm theo tên lớp..."
+               ng-change="timKiem()">
+
+        <button ng-click="moThem()">+ Thêm lớp học</button>
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Tên lớp</th>
+                <th>Khóa học</th>
+                <th>Giảng viên</th>
+                <th>Học phí</th>
+                <th>Khai giảng</th>
+                <th>Kết thúc</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="lop in dsLopHoc">
+                <td>{{lop.TenLopHoc}}</td>
+                <td>{{lop.TenKhoaHoc}}</td>
+                <td>{{lop.TenGiangVien}}</td>
+                <td>{{lop.HocPhi | number}} đ</td>
+                <td>{{lop.NgayKhaiGiang | date:'dd/MM/yyyy'}}</td>
+                <td>{{lop.NgayKetThuc | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button class="btn" ng-click="xemLichHoc(lop.IdLopHoc)">
+                        Lịch học
+                    </button>
+                    <button class="btn" ng-click="moSua(lop)">Sửa</button>
+                    <button class="btn" ng-click="xoa(lop.IdLopHoc)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsLopHoc.length == 0">Không có lớp học</p>
+
+    <!-- MODAL -->
+    <div class="modal" ng-if="dangMo">
+        <div class="modal-box">
+            <h3>{{isSua ? 'Sửa lớp học' : 'Thêm lớp học'}}</h3>
+
+            <input ng-model="lop.TenLopHoc" placeholder="Tên lớp học">
+
+            <select ng-model="lop.IdKhoaHoc">
+                <option value="">-- Chọn khóa học --</option>
+                <option ng-repeat="kh in dsKhoaHoc" ng-value="kh.IdKhoaHoc">
+                    {{kh.TenKhoaHoc}}
+                </option>
+            </select>
+
+            <select ng-model="lop.IdGiangVien">
+                <option value="">-- Chọn giảng viên --</option>
+                <option ng-repeat="gv in dsGiangVien" ng-value="gv.IdGiangVien">
+                    {{gv.TenGiangVien}}
+                </option>
+            </select>
+
+            <input type="number" ng-model="lop.HocPhi" placeholder="Học phí">
+
+            <input type="date" ng-model="lop.NgayKhaiGiang">
+            <input type="date" ng-model="lop.NgayKetThuc">
+
+            <div>
+                <button class="nut" ng-click="luu()">Lưu</button>
+                <button class="nut" ng-click="dong()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,101 @@
+<div ng-controller="AdminBaoCaoCtrl">
+
+    <h3>Báo cáo – Thống kê</h3>
+
+    <!-- ===== SỐ LỚP THEO KHÓA HỌC ===== -->
+    <h4>Số lớp theo khóa học</h4>
+
+    <table class="bang">
+        <thead>
+        <tr>
+            <th>Khóa học</th>
+            <th>Số lớp</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="bc in soLopTheoKhoa">
+            <td>{{bc.TenKhoaHoc}}</td>
+            <td>{{bc.SoLop}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>Báo cáo – Học viên theo lớp</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <select ng-model="idLopChon"
+                ng-options="l.IdLopHoc as l.TenLopHoc for l in dsLop"
+                ng-change="taiHocVienTheoLop()">
+            <option value="">-- Chọn lớp học --</option>
+        </select>
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang" ng-if="dsHocVien.length > 0">
+        <thead>
+        <tr>
+            <th>Học viên</th>
+            <th>Email</th>
+            <th>SĐT</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="hv in dsHocVien">
+            <td>{{hv.TenHocVien}}</td>
+            <td>{{hv.Email}}</td>
+            <td>{{hv.SoDienThoai}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsHocVien.length == 0 && idLopChon">
+        Lớp này chưa có học viên
+    </p>
+
+    <!-- ===== KẾT QUẢ THI (ALL) ===== -->
+
+    <h3>Báo cáo – Kết quả thi theo kỳ thi</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <select ng-model="idKyThiChon"
+                ng-options="k.IdKyThi as k.TenKyThi for k in dsKyThi"
+                ng-change="taiKetQuaThi()">
+            <option value="">-- Chọn kỳ thi --</option>
+        </select>
+
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang" ng-if="dsKetQua.length > 0">
+        <thead>
+        <tr>
+            <th>Học viên</th>
+            <th>Điểm</th>
+            <th>Kết quả</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="kq in dsKetQua">
+            <td>{{kq.TenHocVien}}</td>
+            <td>{{kq.Diem}}</td>
+            <td>
+                <span ng-class="{
+                    'text-green': kq.KetQua == 'DAT',
+                    'text-red': kq.KetQua == 'KHONG_DAT'
+                }">
+                    {{kq.KetQua}}
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsKetQua.length == 0 && idKyThiChon">
+        Kỳ thi này chưa có dữ liệu kết quả
+    </p>
+
+
+
+</div>

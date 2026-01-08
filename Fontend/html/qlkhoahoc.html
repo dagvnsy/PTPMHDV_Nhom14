@@ -1,0 +1,62 @@
+<div ng-controller="AdminKhoaHocCtrl">
+
+    <h3>Quản lý khóa học</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="text"
+               ng-model="tuKhoa"
+               placeholder="Tìm theo tên khóa học, loại tiếng..."
+               ng-change="timKiem()">
+
+        <button ng-click="moThem()">+ Thêm khóa học</button>
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Tên khóa học</th>
+                <th>Level</th>
+                <th>Số buổi</th>
+                <th>Loại tiếng</th>
+                <th>Mô tả</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="kh in dsKhoaHoc">
+                <td>{{kh.TenKhoaHoc}}</td>
+                <td>{{kh.Level}}</td>
+                <td>{{kh.SoBuoiHoc}}</td>
+                <td>{{kh.LoaiTieng}}</td>
+                <td>{{kh.MoTa}}</td>
+                <td>
+                    <button class="btn" ng-click="moSua(kh)">Sửa</button>
+                    <button class="btn" ng-click="xoa(kh.IdKhoaHoc)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsKhoaHoc.length == 0">Không có khóa học</p>
+
+    <!-- MODAL -->
+    <div class="modal" ng-if="dangMo">
+        <div class="modal-box">
+            <h3>{{isSua ? 'Sửa khóa học' : 'Thêm khóa học'}}</h3>
+
+            <input ng-model="kh.TenKhoaHoc" placeholder="Tên khóa học">
+            <input ng-model="kh.Level" placeholder="Level (A1, A2, N3...)">
+            <input type="number" ng-model="kh.SoBuoiHoc" placeholder="Số buổi học">
+            <input ng-model="kh.LoaiTieng" placeholder="Loại tiếng">
+            <textarea ng-model="kh.MoTa" placeholder="Mô tả"></textarea>
+
+            <div>
+                <button class="nut" ng-click="luu()">Lưu</button>
+                <button class="nut" ng-click="dong()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+</div>

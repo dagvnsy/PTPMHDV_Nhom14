@@ -1,0 +1,85 @@
+<div ng-controller="AdminHocVienCtrl">
+
+    <h3>Quản lý học viên</h3>
+
+    <div class="toolbar">
+        <input type="text"
+               ng-model="tuKhoa"
+               placeholder="Tìm theo tên, email..."
+               ng-change="timKiem()">
+
+        <button ng-click="moThem()">+ Thêm học viên</button>
+    </div>
+
+    <table class="bang">
+        <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Ngày sinh</th>
+            <th>Giới tính</th>
+            <th>Email</th>
+            <th>SĐT</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="hv in dsHocVien">
+            <td>{{hv.TenHocVien}}</td>
+            <td>{{hv.NgaySinh | date:'dd/MM/yyyy'}}</td>
+            <td>{{hv.GioiTinh ? 'Nam' : 'Nữ'}}</td>
+            <td>{{hv.Email}}</td>
+            <td>{{hv.SoDienThoai}}</td>
+            <td>
+                <button class="btn" ng-click="moSua(hv)">Sửa</button>
+                <button class="btn" ng-click="xoa(hv.IdHocVien)">Xóa</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsHocVien.length == 0">Không có học viên</p>
+
+    <div class="modal" ng-if="dangMo">
+    <div class="modal-box">
+
+        <h3>{{ isSua ? 'Sửa học viên' : 'Thêm học viên' }}</h3>
+
+        <!-- ===== THÊM ===== -->
+        <div ng-if="!isSua">
+            <input ng-model="dk.TenDangNhap" placeholder="Tên đăng nhập">
+            <input type="password" ng-model="dk.MatKhau" placeholder="Mật khẩu">
+
+            <input ng-model="dk.TenHocVien" placeholder="Tên học viên">
+            <input type="date" ng-model="dk.NgaySinh">
+            <select ng-model="dk.GioiTinh">
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+            <input ng-model="dk.Email" placeholder="Email">
+            <input ng-model="dk.SoDienThoai" placeholder="SĐT">
+            <input ng-model="dk.DiaChi" placeholder="Địa chỉ">
+        </div>
+
+        <!-- ===== SỬA ===== -->
+        <div ng-if="isSua">
+            <input ng-model="hv.TenHocVien" placeholder="Tên học viên">
+            <input type="date" ng-model="hv.NgaySinh">
+            <select ng-model="hv.GioiTinh">
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+            <input ng-model="hv.Email" placeholder="Email">
+            <input ng-model="hv.SoDienThoai" placeholder="SĐT">
+            <input ng-model="hv.DiaChi" placeholder="Địa chỉ">
+        </div>
+
+        <div>
+            <button class="nut" ng-click="luu()">Lưu</button>
+            <button class="nut" ng-click="dong()">Hủy</button>
+        </div>
+
+    </div>
+</div>
+
+
+</div>

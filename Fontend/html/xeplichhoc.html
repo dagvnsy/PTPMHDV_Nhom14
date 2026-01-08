@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="vi" ng-app="ungDung">
+<head>
+    <meta charset="UTF-8">
+    <title>Xếp lịch học</title>
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/xeplichhoc.js"></script>
+    <link rel="stylesheet" href="/css/xeplichhoc.css">
+</head>
+
+<body ng-controller="XepLichHocCtrl">
+
+    <div class="admin-layout">
+
+        <h3>Xếp lịch học</h3>
+
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+            <button ng-click="quayLai()">← Quay lại</button>
+            <button ng-click="moThem()">+ Thêm lịch học</button>
+        </div>
+
+        <!-- BẢNG -->
+        <table class="bang">
+            <thead>
+                <tr>
+                    <th>Ngày học</th>
+                    <th>Ca học</th>
+                    <th>Phòng</th>
+                    <th>Ghi chú</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="lh in dsLichHoc">
+                    <td>{{lh.NgayHoc | date:'dd/MM/yyyy'}}</td>
+                    <td>{{lh.CaHoc}}</td>
+                    <td>{{lh.PhongHoc}}</td>
+                    <td>{{lh.GhiChu}}</td>
+                    <td>
+                        <button class="btn" ng-click="moSua(lh)">Sửa</button>
+                        <button class="btn" ng-click="xoa(lh.IdLichHoc)">Xóa</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p ng-if="dsLichHoc.length == 0">Chưa có lịch học</p>
+
+        <!-- MODAL -->
+        <div class="modal" ng-if="dangMo">
+            <div class="modal-box">
+                <h3>{{isSua ? 'Sửa lịch học' : 'Thêm lịch học'}}</h3>
+
+                <input type="date" ng-model="lh.NgayHoc">
+
+                <select ng-model="lh.CaHoc">
+                    <option value="">-- Chọn ca học --</option>
+                    <option>Sáng</option>
+                    <option>Chiều</option>
+                    <option>Tối</option>
+                </select>
+
+                <input ng-model="lh.PhongHoc" placeholder="Phòng học">
+                <input ng-model="lh.GhiChu" placeholder="Ghi chú">
+
+                <div>
+                    <button class="nut" ng-click="luu()">Lưu</button>
+                    <button class="nut" ng-click="dong()">Hủy</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

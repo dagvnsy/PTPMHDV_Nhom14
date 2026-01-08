@@ -1,0 +1,58 @@
+<div ng-controller="AdminChungChiCtrl">
+
+   <div class="cap-chung-chi">
+
+    <h2>CẤP CHỨNG CHỈ</h2>
+
+    <div class="toolbar">
+        <label>Khóa học:</label>
+        <select ng-model="idKhoaHoc"
+                ng-options="kh.IdKhoaHoc as kh.TenKhoaHoc for kh in dsKhoaHoc"
+                ng-change="loadHocVien()">
+            <option value="">-- Chọn khóa học --</option>
+        </select>
+    </div>
+
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Học viên</th>
+                <th>Điểm cuối kỳ</th>
+                <th>Xếp loại</th>
+                <th>Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="hv in dsHocVien">
+                <td>{{hv.TenHocVien}}</td>
+                <td>{{hv.Diem}}</td>
+                <td>{{hv.XepLoai}}</td>
+
+                <td>
+                    <!-- CHƯA ĐẠT -->
+                    <span ng-if="hv.XepLoai === 'Không đạt'">
+                        Không đủ điều kiện
+                    </span>
+
+                    <!-- ĐẠT nhưng CHƯA cấp -->
+                    <button class="btn" ng-if="hv.XepLoai !== 'Không đạt' && !hv.daCap"
+                            ng-click="capChungChi(hv)">
+                        Cấp chứng chỉ
+                    </button>
+
+
+                    <button class="btn" ng-if="hv.daCap"
+                            ng-click="xemChungChi(hv.idChungChi)">
+                        Xem chứng chỉ
+                    </button>
+                </td>
+            </tr>
+
+
+        </tbody>
+    </table>
+
+</div>
+
+
+</div>

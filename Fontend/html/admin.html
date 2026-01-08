@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="ungDung">
+<head>
+    <meta charset="utf-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/global.js"></script>
+    <script src="/js/admin.js"></script>
+    <script src="/js/qlhocvien.js"></script>
+    <script src="/js/qlgiangvien.js"></script>
+    <script src="/js/qlkhoahoc.js"></script>
+    <script src="/js/qllophoc.js"></script>
+    <script src="/js/qltaikhoan.js"></script>
+    <script src="/js/xeplichhoc.js"></script>
+    <script src="/js/qlkithi.js"></script>
+    <script src="/js/qllichhoc.js"></script>
+    <script src="/js/qlhoadon.js"></script>
+    <script src="/js/capchungchi.js"></script>
+    <script src="/js/baocao.js"></script>
+
+</head>
+
+<body ng-controller="AdminCtrl">
+
+<div class="admin-layout">
+
+    <div class="menu">
+        <h3>ADMIN</h3>
+        <ul>
+            <li ng-click="loadPage('qlhocvien')">Quản lý học viên</li>
+            <li ng-click="loadPage('qlgiangvien')">Quản lý giảng viên</li>
+            <li ng-click="loadPage('qlkhoahoc')">Quản lý khóa học</li>
+            <li ng-click="loadPage('qllophoc')">Quản lý lớp học</li>
+            <li ng-click="loadPage('qltaikhoan')">Quản lý tài khoản</li>
+            <li ng-click="loadPage('qllichhoc')">Quản lý lịch học</li>
+            <li ng-click="loadPage('qlkithi')">Quản lý kì thi</li>
+            <li ng-click="loadPage('qlhoadon')">Quản lý hóa đơn</li>
+            <li ng-click="loadPage('capchungchi')">Cấp chứng chỉ</li>
+            <li ng-click="loadPage('baocao')">Thống kê báo cáo</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div ng-include="page"></div>
+    </div>
+
+</div>
+
+</body>
+</html>

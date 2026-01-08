@@ -1,0 +1,66 @@
+<div ng-controller="AdminTaiKhoanCtrl">
+
+    <h3>Quản lý tài khoản</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="text"
+               ng-model="tuKhoa"
+               placeholder="Tìm theo tên đăng nhập..."
+               ng-change="timKiem()">
+
+        <button ng-click="moThem()">+ Thêm tài khoản</button>
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Tên đăng nhập</th>
+                <th>Loại người dùng</th>
+                <th>Trạng thái</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="tk in dsTaiKhoan">
+                <td>{{tk.TenDangNhap}}</td>
+                <td>{{tk.LoaiNguoiDung}}</td>
+                <td>
+                    <span ng-if="tk.TrangThai">Hoạt động</span>
+                    <span ng-if="!tk.TrangThai">Khóa</span>
+                </td>
+                <td>
+                    <button class="btn" ng-click="doiTrangThai(tk)">
+                        {{tk.TrangThai ? 'Khóa' : 'Mở'}}
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsTaiKhoan.length == 0">Không có tài khoản</p>
+
+    <!-- MODAL THÊM -->
+    <div class="modal" ng-if="dangMo">
+        <div class="modal-box">
+            <h3>Thêm tài khoản</h3>
+
+            <input ng-model="tk.TenDangNhap" placeholder="Tên đăng nhập">
+            <input type="password" ng-model="tk.MatKhau" placeholder="Mật khẩu">
+
+            <select ng-model="tk.LoaiNguoiDung">
+                <option value="">-- Chọn loại --</option>
+                <option value="ADMIN">ADMIN</option>
+                <option value="GIANGVIEN">GIẢNG VIÊN</option>
+                <option value="HOCVIEN">HỌC VIÊN</option>
+            </select>
+
+            <div>
+                <button class="nut" ng-click="them()">Lưu</button>
+                <button class="nut" ng-click="dong()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+</div>

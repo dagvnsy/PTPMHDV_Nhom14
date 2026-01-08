@@ -1,0 +1,81 @@
+<div ng-controller="AdminKyThiCtrl">
+
+    <h3>Quản lý kỳ thi</h3>
+
+    <div class="toolbar">
+        <button ng-click="moThem()">+ Thêm kỳ thi</button>
+    </div>
+
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Tên kỳ thi</th>
+                <th>Loại</th>
+                <th>Ngày thi</th>
+                <th>Thang điểm</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="kt in dsKyThi">
+                <td>{{kt.TenKyThi}}</td>
+                <td>{{kt.LoaiKyThi}}</td>
+                <td>{{kt.NgayThi | date:'dd/MM/yyyy'}}</td>
+                <td>{{kt.ThangDiem}}</td>
+                <td>
+                    <button class="btn" ng-if="!kt.IsMoNhapDiem"
+                            ng-click="capNhatNhapDiem(kt, true)">
+                        Mở nhập điểm
+                    </button>
+
+                    <button class="btn" ng-if="kt.IsMoNhapDiem"
+                            ng-click="capNhatNhapDiem(kt, false)">
+                        Khóa nhập điểm
+                    </button>
+                    <button class="btn" ng-click="moSua(kt)">Sửa</button>
+                    <button class="btn" ng-click="xoa(kt.IdKyThi)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- MODAL -->
+    <div class="modal" ng-if="dangMo">
+        <div class="modal-box">
+
+            <h3>{{isSua ? 'Sửa kỳ thi' : 'Thêm kỳ thi'}}</h3>
+
+            <input ng-model="kt.TenKyThi" placeholder="Tên kỳ thi">
+
+            <select ng-model="kt.LoaiKyThi">
+                <option value="">-- Loại kỳ thi --</option>
+                <option value="XEP_LOP">Thi xếp lớp</option>
+                <option value="GIUA_KY">Giữa kỳ</option>
+                <option value="CUOI_KY">Cuối kỳ</option>
+            </select>
+
+            <select ng-model="kt.IdLopHoc">
+                <option value="">-- Chọn lớp (nếu có) --</option>
+                <option ng-repeat="l in dsLopHoc" ng-value="l.IdLopHoc">
+                    {{l.TenLopHoc}}
+                </option>
+            </select>
+
+            <select ng-model="kt.IdKhoaHoc">
+                <option value="">-- Chọn khóa học (nếu có) --</option>
+                <option ng-repeat="k in dsKhoaHoc" ng-value="k.IdKhoaHoc">
+                    {{k.TenKhoaHoc}}
+                </option>
+            </select>
+
+            <input type="date" ng-model="kt.NgayThi">
+            <input type="number" ng-model="kt.ThangDiem" placeholder="Thang điểm">
+
+            <div class="nut-box">
+                <button ng-click="luu()">Lưu</button>
+                <button ng-click="dong()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+</div>

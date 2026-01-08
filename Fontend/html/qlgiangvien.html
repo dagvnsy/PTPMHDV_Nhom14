@@ -1,0 +1,97 @@
+
+
+<div ng-controller="AdminGiangVienCtrl">
+
+    <h3>Quản lý giảng viên</h3>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar">
+        <input type="text"
+               ng-model="tuKhoa"
+               placeholder="Tìm theo tên, email, chuyên môn..."
+               ng-change="timKiem()">
+
+        <button ng-click="moThem()">+ Thêm giảng viên</button>
+    </div>
+
+    <!-- BẢNG -->
+    <table class="bang">
+        <thead>
+            <tr>
+                <th>Họ tên</th>
+                <th>Giới tính</th>
+                <th>Trình độ</th>
+                <th>Chuyên môn</th>
+                <th>Email</th>
+                <th>SĐT</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="gv in dsGiangVien">
+                <td>{{gv.TenGiangVien}}</td>
+                <td>{{gv.GioiTinh ? 'Nam' : 'Nữ'}}</td>
+                <td>{{gv.TrinhDo}}</td>
+                <td>{{gv.ChuyenMon}}</td>
+                <td>{{gv.Email}}</td>
+                <td>{{gv.SoDienThoai}}</td>
+                <td>
+                    <button class="btn" ng-click="moSua(gv)">Sửa</button>
+                    <button class="btn" ng-click="xoa(gv.IdGiangVien)">Xóa</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p ng-if="dsGiangVien.length == 0">Không có giảng viên</p>
+
+    <div class="modal" ng-if="dangMo">
+    <div class="modal-box">
+
+        <h3>{{ isSua ? 'Sửa giảng viên' : 'Thêm giảng viên' }}</h3>
+
+        <!-- ===== FORM THÊM ===== -->
+        <div ng-if="!isSua">
+            <input ng-model="form.TenDangNhap" placeholder="Tên đăng nhập">
+            <input type="password" ng-model="form.MatKhau" placeholder="Mật khẩu">
+
+            <input ng-model="form.TenGiangVien" placeholder="Tên giảng viên">
+
+            <select ng-model="form.GioiTinh">
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+
+            <input ng-model="form.TrinhDo" placeholder="Trình độ">
+            <input ng-model="form.ChuyenMon" placeholder="Chuyên môn">
+            <input ng-model="form.Email" placeholder="Email">
+            <input ng-model="form.SoDienThoai" placeholder="SĐT">
+        </div>
+
+        <!-- ===== FORM SỬA ===== -->
+        <div ng-if="isSua">
+            <input ng-model="gv.TenGiangVien" placeholder="Tên giảng viên">
+
+            <select ng-model="gv.GioiTinh">
+                <option value="true">Nam</option>
+                <option value="false">Nữ</option>
+            </select>
+
+            <input ng-model="gv.TrinhDo" placeholder="Trình độ">
+            <input ng-model="gv.ChuyenMon" placeholder="Chuyên môn">
+            <input ng-model="gv.Email" placeholder="Email">
+            <input ng-model="gv.SoDienThoai" placeholder="SĐT">
+        </div>
+
+        <div>
+            <button class="nut" ng-click="luu()">Lưu</button>
+            <button class="nut" ng-click="dong()">Hủy</button>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+
